@@ -14,6 +14,7 @@ import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.World;
 import com.dhanushka.bounce.Bounce;
 import com.dhanushka.bounce.sprites.utils.States;
+import com.dhanushka.bounce.tools.FileLoaderConstants;
 
 public class SmallBall extends Sprite {
 
@@ -26,10 +27,13 @@ public class SmallBall extends Sprite {
     States stateX;
     boolean canBounce;
     TiledMap map;
+    public static boolean up = false;
+    public static boolean left = false;
+    public static boolean right = false;
     //Array<Body> bodies = new Array<Body>(world.getBodyCount());
 
     public SmallBall(World world) {
-        super(new Texture("android/assets/ball-small.png")); //android/assets/
+        super(new Texture(FileLoaderConstants.SMALL_BALL)); //android/assets/
         this.world = world;
         defineBall(); //"android/assets/ball-small.png"
         ballpng = new TextureRegion(getTexture(), 0, 0, 31, 31);
@@ -53,6 +57,7 @@ public class SmallBall extends Sprite {
         //ball.setLinearDamping(3f);
     }
 
+    @Deprecated
     public void handleInputs(float dt) {
         if (Gdx.input.isKeyPressed(Input.Keys.RIGHT) && ball.getLinearVelocity().x <= 4f) {
             ball.applyLinearImpulse(new Vector2(0.25f, 0), ball.getWorldCenter(), true);
@@ -61,6 +66,20 @@ public class SmallBall extends Sprite {
             ball.applyLinearImpulse(new Vector2(-0.25f, 0), ball.getWorldCenter(), true);
         }
         if (Gdx.input.isKeyPressed(Input.Keys.UP) && ball.getLinearVelocity().y == 0) { //&& state == States.ONTHEGROUND) {
+            stateY = States.JUMPING;
+            ball.applyLinearImpulse(new Vector2(0, 5f), ball.getWorldCenter(), true);
+            canBounce = true;
+        }
+    }
+
+    public void handleButtonInputs(float dt) {
+        if (right && ball.getLinearVelocity().x <= 4f) {
+            ball.applyLinearImpulse(new Vector2(0.25f, 0), ball.getWorldCenter(), true);
+        }
+        if (left && ball.getLinearVelocity().x >= -4f) {
+            ball.applyLinearImpulse(new Vector2(-0.25f, 0), ball.getWorldCenter(), true);
+        }
+        if (up && ball.getLinearVelocity().y == 0) { //&& state == States.ONTHEGROUND) {
             stateY = States.JUMPING;
             ball.applyLinearImpulse(new Vector2(0, 5f), ball.getWorldCenter(), true);
             canBounce = true;

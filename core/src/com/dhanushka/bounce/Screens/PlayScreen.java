@@ -28,6 +28,7 @@ import com.dhanushka.bounce.Bounce;
 import com.dhanushka.bounce.hud.Hud;
 import com.dhanushka.bounce.sprites.Ball;
 import com.dhanushka.bounce.sprites.SmallBall;
+import com.dhanushka.bounce.tools.FileLoaderConstants;
 import com.dhanushka.bounce.tools.WorldCreator;
 
 public class PlayScreen implements Screen {
@@ -66,7 +67,7 @@ public class PlayScreen implements Screen {
 
         mapLoader = new TmxMapLoader();
 
-        map = mapLoader.load("android/assets/map/lvl"+ level +".tmx"); //android/assets/
+        map = mapLoader.load(FileLoaderConstants.MAP_LOCATION + level + FileLoaderConstants.MAP_REST_TMX); //android/assets/
         System.out.println("map loading fine");
         mapRenderer = new OrthogonalTiledMapRenderer(map, 1/Bounce.PPM);
 
@@ -84,7 +85,8 @@ public class PlayScreen implements Screen {
     }
 
     public void handleInputs(float dt) {
-        ball.handleInputs(dt);
+        //ball.handleInputs(dt);
+        ball.handleButtonInputs(dt);
     }
 
     public void update(float dt) {
