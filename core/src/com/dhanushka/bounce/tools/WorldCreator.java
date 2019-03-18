@@ -10,6 +10,7 @@ import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.World;
 import com.dhanushka.bounce.Bounce;
+import com.dhanushka.bounce.sprites.Bombs;
 
 public class WorldCreator {
     public WorldCreator(World world, TiledMap map) {
@@ -17,8 +18,6 @@ public class WorldCreator {
         PolygonShape shape = new PolygonShape();
         FixtureDef fixtureDef = new FixtureDef();
         Body body;
-
-
 
         for(MapObject object: map.getLayers().get(1).getObjects().getByType(RectangleMapObject.class)) {
             Rectangle rectangle = ((RectangleMapObject)object).getRectangle();
@@ -41,6 +40,12 @@ public class WorldCreator {
             shape.setAsBox(rectangle.getWidth()/2/Bounce.PPM, rectangle.getHeight()/2/Bounce.PPM);
             fixtureDef.shape = shape;
             body.createFixture(fixtureDef);
+        }
+
+        for(MapObject object: map.getLayers().get(4).getObjects().getByType(RectangleMapObject.class)) {
+            Rectangle rectangle = ((RectangleMapObject)object).getRectangle();
+            System.out.println("+");
+            new Bombs(world, map, rectangle);
         }
     }
 

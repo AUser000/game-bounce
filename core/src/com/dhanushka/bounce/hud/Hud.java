@@ -104,4 +104,11 @@ public class Hud {
 
         stage.addActor(table);
     }
+
+    public void despose() {
+        skin.dispose();
+        stage.dispose();
+        atlas.dispose();
+        font.dispose();
+    }
 }

@@ -38,6 +38,25 @@ public abstract class InteractiveTileObject {
         fixture = body.createFixture(fixtureDef);
     }
 
+    protected InteractiveTileObject(World world, TiledMap map, Rectangle bounds, String userdata) {
+        this.world = world;
+        this.map = map;
+        this.bounds = bounds;
+
+        BodyDef bodyDef = new BodyDef();
+        FixtureDef fixtureDef = new FixtureDef();
+        PolygonShape shape = new PolygonShape();
+
+        bodyDef.type = BodyDef.BodyType.StaticBody;
+        bodyDef.position.set((bounds.getX() + bounds.getWidth()/2)/ Bounce.PPM, (bounds.getY() + bounds.getHeight()/2)/Bounce.PPM);
+
+        body = world.createBody(bodyDef);
+        shape.setAsBox(bounds.getWidth()/2/ Bounce.PPM, bounds.getHeight()/2/Bounce.PPM);
+        fixtureDef.shape = shape;
+        fixture = body.createFixture(fixtureDef);
+        fixture.setUserData(userdata);
+    }
+
     public abstract void onHit();
 
 }

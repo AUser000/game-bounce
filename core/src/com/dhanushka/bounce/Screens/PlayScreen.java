@@ -29,6 +29,7 @@ import com.dhanushka.bounce.hud.Hud;
 import com.dhanushka.bounce.sprites.Ball;
 import com.dhanushka.bounce.sprites.SmallBall;
 import com.dhanushka.bounce.tools.FileLoaderConstants;
+import com.dhanushka.bounce.tools.WorldContactListener;
 import com.dhanushka.bounce.tools.WorldCreator;
 
 public class PlayScreen implements Screen {
@@ -77,6 +78,7 @@ public class PlayScreen implements Screen {
         new WorldCreator(world, map);
 
         ball = new SmallBall(world);
+        world.setContactListener(new WorldContactListener());
     }
 
     @Override
@@ -105,7 +107,7 @@ public class PlayScreen implements Screen {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         mapRenderer.render();
 
-        //box2DDebugRenderer.render(world, cam.combined);
+
         //ball.ball.getPosition().x += 1;
         game.batch.setProjectionMatrix(cam.combined);
         game.batch.begin();
@@ -113,6 +115,7 @@ public class PlayScreen implements Screen {
         game.batch.end();
         game.batch.setProjectionMatrix(hud.stage.getCamera().combined);
         hud.stage.draw();
+        //box2DDebugRenderer.render(world, cam.combined);
     }
 
     @Override
@@ -137,6 +140,9 @@ public class PlayScreen implements Screen {
 
     @Override
     public void dispose() {
-
+        hud.despose();
+        world.dispose();
+        map.dispose();
+        mapRenderer.dispose();
     }
 }

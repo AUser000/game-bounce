@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="120" height="9" tilewidth="32" tileheight="32" nextobjectid="118">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="120" height="9" tilewidth="32" tileheight="32" nextobjectid="120">
  <tileset firstgid="1" name="pack" tilewidth="32" tileheight="32" spacing="2" margin="2" tilecount="15">
   <image source="pack.png" width="512" height="64"/>
  </tileset>
@@ -27,5 +27,13 @@
  </objectgroup>
  <objectgroup name="colission">
   <object id="117" x="35" y="257" width="3805" height="31"/>
+ </objectgroup>
+ <layer name="Tile Layer 2" width="120" height="9">
+  <data encoding="base64" compression="zlib">
+   eJztzjENAAAIA7Bd+JeMiSUctAqaAAAA0DTXAXhoASWwAAc=
+  </data>
+ </layer>
+ <objectgroup name="out">
+  <object id="118" x="584" y="224" width="13" height="30"/>
  </objectgroup>
 </map>

@@ -10,8 +10,10 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.CircleShape;
+import com.badlogic.gdx.physics.box2d.EdgeShape;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.World;
+import com.badlogic.gdx.utils.Disposable;
 import com.dhanushka.bounce.Bounce;
 import com.dhanushka.bounce.sprites.utils.States;
 import com.dhanushka.bounce.tools.FileLoaderConstants;
@@ -21,15 +23,12 @@ public class SmallBall extends Sprite {
     private World world;
     TextureRegion ballpng;
     public Body ball;
-    boolean notBounced = false;
-    float previouse;
     States stateY;
-    States stateX;
     boolean canBounce;
-    TiledMap map;
-    public static boolean up = false;
-    public static boolean left = false;
-    public static boolean right = false;
+    public static boolean headHit = false;
+    public static boolean up      = false;
+    public static boolean left    = false;
+    public static boolean right   = false;
     //Array<Body> bodies = new Array<Body>(world.getBodyCount());
 
     public SmallBall(World world) {
@@ -54,6 +53,14 @@ public class SmallBall extends Sprite {
 
         fixtureDef.shape = shape;
         ball.createFixture(fixtureDef);
+
+        // now head
+        EdgeShape head = new EdgeShape();
+        head.set(new Vector2(-5/Bounce.PPM, 15/Bounce.PPM), new Vector2(5/Bounce.PPM, 15/Bounce.PPM));
+        fixtureDef.shape = head;
+        fixtureDef.isSensor = true;
+
+        ball.createFixture(fixtureDef).setUserData("head");
         //ball.setLinearDamping(3f);
     }
 
@@ -79,7 +86,7 @@ public class SmallBall extends Sprite {
         if (left && ball.getLinearVelocity().x >= -4f) {
             ball.applyLinearImpulse(new Vector2(-0.25f, 0), ball.getWorldCenter(), true);
         }
-        if (up && ball.getLinearVelocity().y == 0) { //&& state == States.ONTHEGROUND) {
+        if (up && ball.getLinearVelocity().y == 0 && !headHit) { //&& state == States.ONTHEGROUND) {
             stateY = States.JUMPING;
             ball.applyLinearImpulse(new Vector2(0, 5f), ball.getWorldCenter(), true);
             canBounce = true;
@@ -100,5 +107,6 @@ public class SmallBall extends Sprite {
     public static void out() {
         System.out.print("-out-");
     }
+
 
 }
