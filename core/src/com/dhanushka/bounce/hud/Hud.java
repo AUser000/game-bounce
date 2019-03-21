@@ -16,7 +16,7 @@ import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.dhanushka.bounce.Bounce;
 import com.dhanushka.bounce.sprites.SmallBall;
-import com.dhanushka.bounce.tools.FileLoaderConstants;
+import com.dhanushka.bounce.tools.Constants;
 
 public class Hud {
     public Stage stage;
@@ -34,7 +34,7 @@ public class Hud {
         viewport = new FitViewport(Bounce.V_WIDTH, Bounce.V_HEIGHT, new OrthographicCamera());
         stage = new Stage(viewport, sb);
 
-        atlas = new TextureAtlas(FileLoaderConstants.BIG_BUTTON_PACK);
+        atlas = new TextureAtlas(Constants.BIG_BUTTON_PACK);
         skin = new Skin(atlas);
 
         Gdx.input.setInputProcessor(stage);
@@ -42,7 +42,7 @@ public class Hud {
 
         font = new BitmapFont();
         TextButton.TextButtonStyle style = new TextButton.TextButtonStyle();
-        style.up = skin.getDrawable(FileLoaderConstants.BUTTON_UP);
+        style.up = skin.getDrawable(Constants.BUTTON_UP);
         style.font = font;
         buttonUp = new TextButton("", style);
         buttonUp.addListener(new InputListener(){
@@ -58,7 +58,7 @@ public class Hud {
         });
 
         TextButton.TextButtonStyle style2 = new TextButton.TextButtonStyle();
-        style2.up = skin.getDrawable(FileLoaderConstants.BUTTON_LEFT);
+        style2.up = skin.getDrawable(Constants.BUTTON_LEFT);
         style2.font = font;
 
         buttonLeft = new TextButton("", style2);
@@ -75,7 +75,7 @@ public class Hud {
         });
 
         TextButton.TextButtonStyle style3 = new TextButton.TextButtonStyle();
-        style3.up = skin.getDrawable(FileLoaderConstants.BUTTON_RIGHT);
+        style3.up = skin.getDrawable(Constants.BUTTON_RIGHT);
         style3.font = font;
 
         buttonRight = new TextButton("", style3);

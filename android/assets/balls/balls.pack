@@ -1,0 +1,19 @@
+
+balls.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+ball-big
+  rotate: false
+  xy: 1, 1
+  size: 51, 51
+  orig: 51, 51
+  offset: 0, 0
+  index: -1
+ball-small
+  rotate: false
+  xy: 54, 21
+  size: 31, 31
+  orig: 31, 31
+  offset: 0, 0
+  index: -1

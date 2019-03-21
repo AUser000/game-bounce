@@ -7,18 +7,12 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.maps.MapObject;
-import com.badlogic.gdx.maps.objects.RectangleMapObject;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
-import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.physics.box2d.Body;
-import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
-import com.badlogic.gdx.physics.box2d.FixtureDef;
-import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.utils.Logger;
@@ -26,9 +20,8 @@ import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.dhanushka.bounce.Bounce;
 import com.dhanushka.bounce.hud.Hud;
-import com.dhanushka.bounce.sprites.Ball;
 import com.dhanushka.bounce.sprites.SmallBall;
-import com.dhanushka.bounce.tools.FileLoaderConstants;
+import com.dhanushka.bounce.tools.Constants;
 import com.dhanushka.bounce.tools.WorldContactListener;
 import com.dhanushka.bounce.tools.WorldCreator;
 
@@ -40,6 +33,7 @@ public class PlayScreen implements Screen {
     Viewport viewport;
     OrthographicCamera cam;
     Hud hud;
+    private TextureAtlas atlas;
 
     TmxMapLoader mapLoader;
     TiledMap map;
@@ -62,13 +56,15 @@ public class PlayScreen implements Screen {
 
         hud = new Hud(game.batch);
 
+        atlas = new TextureAtlas(Constants.BALLS_PACK);
+
         Label upLabel = new Label("Hello", new Label.LabelStyle(new BitmapFont(), Color.WHITE));
         upLabel.setSize(Gdx.graphics.getWidth()/8,Gdx.graphics.getHeight()/8);
         upLabel.setPosition(0, Gdx.graphics.getHeight()/8);
 
         mapLoader = new TmxMapLoader();
 
-        map = mapLoader.load(FileLoaderConstants.MAP_LOCATION + level + FileLoaderConstants.MAP_REST_TMX); //android/assets/
+        map = mapLoader.load(Constants.MAP_LOCATION + level + Constants.MAP_REST_TMX); //android/assets/
         System.out.println("map loading fine");
         mapRenderer = new OrthogonalTiledMapRenderer(map, 1/Bounce.PPM);
 
@@ -77,8 +73,12 @@ public class PlayScreen implements Screen {
         box2DDebugRenderer = new Box2DDebugRenderer();
         new WorldCreator(world, map);
 
-        ball = new SmallBall(world);
+        ball = new SmallBall(world, this);
         world.setContactListener(new WorldContactListener());
+    }
+
+    public TextureAtlas getAtlas() {
+        return atlas;
     }
 
     @Override
@@ -95,7 +95,7 @@ public class PlayScreen implements Screen {
         world.step(1/60f, 6, 2);
         handleInputs(dt);
         ball.update(dt);
-        cam.position.x = ball.ball.getPosition().x;
+        cam.position.x = ball.getBody().getPosition().x;
         cam.update();
         mapRenderer.setView(cam);
     }

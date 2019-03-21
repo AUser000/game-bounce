@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="120" height="9" tilewidth="32" tileheight="32" nextobjectid="120">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="120" height="9" tilewidth="32" tileheight="32" nextobjectid="123">
  <tileset firstgid="1" name="pack" tilewidth="32" tileheight="32" spacing="2" margin="2" tilecount="15">
   <image source="pack.png" width="512" height="64"/>
  </tileset>
@@ -35,5 +35,16 @@
  </layer>
  <objectgroup name="out">
   <object id="118" x="584" y="224" width="13" height="30"/>
+ </objectgroup>
+ <layer name="bigandsmall" width="120" height="9">
+  <data encoding="base64" compression="zlib">
+   eJztyrENAAAIA6DG/4/2gY66wUwCAABAM08XuLcfSAAF
+  </data>
+ </layer>
+ <objectgroup name="big">
+  <object id="122" x="483" y="225" width="26" height="29"/>
+ </objectgroup>
+ <objectgroup name="small">
+  <object id="120" x="131" y="227" width="24" height="29"/>
  </objectgroup>
 </map>

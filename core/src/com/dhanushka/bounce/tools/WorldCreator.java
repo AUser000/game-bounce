@@ -47,6 +47,30 @@ public class WorldCreator {
             System.out.println("+");
             new Bombs(world, map, rectangle);
         }
+
+        for(MapObject object: map.getLayers().get(7).getObjects().getByType(RectangleMapObject.class)) {
+            Rectangle rectangle = ((RectangleMapObject)object).getRectangle();
+            System.out.println("added smaller");
+            bodyDef.type = BodyDef.BodyType.StaticBody;
+            bodyDef.position.set((rectangle.getX() + rectangle.getWidth()/2)/ Bounce.PPM, (rectangle.getY() + rectangle.getHeight()/2)/Bounce.PPM);
+
+            body = world.createBody(bodyDef);
+            shape.setAsBox(rectangle.getWidth()/2/Bounce.PPM, rectangle.getHeight()/2/Bounce.PPM);
+            fixtureDef.shape = shape;
+            body.createFixture(fixtureDef).setUserData("small");
+        }
+
+        for(MapObject object: map.getLayers().get(6).getObjects().getByType(RectangleMapObject.class)) {
+            Rectangle rectangle = ((RectangleMapObject)object).getRectangle();
+            System.out.println("added bigger");
+            bodyDef.type = BodyDef.BodyType.StaticBody;
+            bodyDef.position.set((rectangle.getX() + rectangle.getWidth()/2)/ Bounce.PPM, (rectangle.getY() + rectangle.getHeight()/2)/Bounce.PPM);
+
+            body = world.createBody(bodyDef);
+            shape.setAsBox(rectangle.getWidth()/2/Bounce.PPM, rectangle.getHeight()/2/Bounce.PPM);
+            fixtureDef.shape = shape;
+            body.createFixture(fixtureDef).setUserData("big");
+        }
     }
 
 }
