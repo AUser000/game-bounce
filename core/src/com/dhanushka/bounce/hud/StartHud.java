@@ -33,7 +33,7 @@ public class StartHud {
         font = new BitmapFont();
         TextButton.TextButtonStyle style = new TextButton.TextButtonStyle();
         style.font = font;
-        playButton = new TextButton("LOADING...", style);
+        playButton = new TextButton("BOUNCE TWO", style);
 
 
 

@@ -33,10 +33,10 @@ public class StartScreen implements ScreenState {
 
     @Override
     public void update(float dt) {
-        if (dt > 5000) {
+        if (maxtime > 3) {
             gsm.setScreen(GameScreenManager.STATE.MAIN_MENU);
         }
-        maxtime += maxtime;
+        maxtime += dt;
     }
 
     @Override

@@ -17,7 +17,7 @@ public class Bounce extends Game {
 	public void create () {
 		batch = new SpriteBatch();
 		gsm = new GameScreenManager(this);
-		gsm.setScreen(GameScreenManager.STATE.MAIN_MENU);
+		gsm.setScreen(GameScreenManager.STATE.START);
 	}
 
 	@Override

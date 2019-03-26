@@ -61,7 +61,7 @@ public class Hudson {
         TextButton.TextButtonStyle style2 = new TextButton.TextButtonStyle();
         style2.font = font;
 
-        exitButton = new TextButton("HIGH SCORE", style2);
+        exitButton = new TextButton("EXIT", style2);
         exitButton.addListener(new InputListener(){
             @Override
             public void touchUp (InputEvent event, float x, float y, int pointer, int button) {
@@ -77,7 +77,7 @@ public class Hudson {
         TextButton.TextButtonStyle style3 = new TextButton.TextButtonStyle();
         style3.font = font;
 
-        scoreButton = new TextButton("EXIT", style3);
+        scoreButton = new TextButton("HIGH SCORE", style3);
         scoreButton.addListener(new InputListener(){
             @Override
             public void touchUp (InputEvent event, float x, float y, int pointer, int button) {
@@ -92,9 +92,9 @@ public class Hudson {
 
 
         Table table = new Table();
-        table.top();
+        table.center();
         table.setFillParent(true);
-        table.add(playButton).expandX().padBottom(20).padTop(30);
+        table.add(playButton).expandX().padBottom(20);
         table.row();
         table.add(scoreButton).expandX().padBottom(20);
         table.row();
