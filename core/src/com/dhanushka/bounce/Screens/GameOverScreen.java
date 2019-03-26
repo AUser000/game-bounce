@@ -1,8 +1,9 @@
 package com.dhanushka.bounce.Screens;
 
 import com.badlogic.gdx.Screen;
+import com.dhanushka.bounce.tools.ScreenState;
 
-public class GameOverScreen implements Screen {
+public class GameOverScreen implements ScreenState {
 
     @Override
     public void show() {
@@ -36,6 +37,16 @@ public class GameOverScreen implements Screen {
 
     @Override
     public void dispose() {
+
+    }
+
+    @Override
+    public void update(float dt) {
+
+    }
+
+    @Override
+    public void activeInputProcessor() {
 
     }
 }

@@ -22,10 +22,11 @@ import com.dhanushka.bounce.Bounce;
 import com.dhanushka.bounce.hud.Hud;
 import com.dhanushka.bounce.sprites.SmallBall;
 import com.dhanushka.bounce.tools.Constants;
+import com.dhanushka.bounce.tools.ScreenState;
 import com.dhanushka.bounce.tools.WorldContactListener;
 import com.dhanushka.bounce.tools.WorldCreator;
 
-public class PlayScreen implements Screen {
+public class PlayScreen implements ScreenState {
 
     Logger log = new Logger(PlayScreen.class.getName());
     Bounce game;
@@ -91,6 +92,7 @@ public class PlayScreen implements Screen {
         ball.handleButtonInputs(dt);
     }
 
+    @Override
     public void update(float dt) {
         world.step(1/60f, 6, 2);
         handleInputs(dt);
@@ -98,6 +100,7 @@ public class PlayScreen implements Screen {
         cam.position.x = ball.getBody().getPosition().x;
         cam.update();
         mapRenderer.setView(cam);
+
     }
 
     @Override
@@ -144,5 +147,9 @@ public class PlayScreen implements Screen {
         world.dispose();
         map.dispose();
         mapRenderer.dispose();
+    }
+
+    public void activeInputProcessor() {
+        Gdx.input.setInputProcessor(hud.stage);
     }
 }
