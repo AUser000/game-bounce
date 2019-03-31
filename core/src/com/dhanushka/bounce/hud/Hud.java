@@ -15,7 +15,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.dhanushka.bounce.Bounce;
-import com.dhanushka.bounce.sprites.SmallBall;
+import com.dhanushka.bounce.sprites.Ball;
 import com.dhanushka.bounce.tools.Constants;
 
 public class Hud {
@@ -48,11 +48,11 @@ public class Hud {
         buttonUp.addListener(new InputListener(){
             @Override
             public void touchUp (InputEvent event, float x, float y, int pointer, int button) {
-                SmallBall.up = false;
+                Ball.up = false;
             }
             @Override
             public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
-                SmallBall.up = true;
+                Ball.up = true;
                 return true;
             }
         });
@@ -65,11 +65,11 @@ public class Hud {
         buttonLeft.addListener(new InputListener(){
             @Override
             public void touchUp (InputEvent event, float x, float y, int pointer, int button) {
-                SmallBall.left = false;
+                Ball.left = false;
             }
             @Override
             public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
-                SmallBall.left = true;
+                Ball.left = true;
                 return true;
             }
         });
@@ -82,11 +82,11 @@ public class Hud {
         buttonRight.addListener(new InputListener(){
             @Override
             public void touchUp (InputEvent event, float x, float y, int pointer, int button) {
-                SmallBall.right = false;
+                Ball.right = false;
             }
             @Override
             public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
-                SmallBall.right = true;
+                Ball.right = true;
                 return true;
             }
         });

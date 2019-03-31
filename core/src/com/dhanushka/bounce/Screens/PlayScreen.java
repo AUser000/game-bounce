@@ -1,7 +1,7 @@
 package com.dhanushka.bounce.Screens;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -20,7 +20,7 @@ import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.dhanushka.bounce.Bounce;
 import com.dhanushka.bounce.hud.Hud;
-import com.dhanushka.bounce.sprites.SmallBall;
+import com.dhanushka.bounce.sprites.Ball;
 import com.dhanushka.bounce.tools.Constants;
 import com.dhanushka.bounce.tools.ScreenState;
 import com.dhanushka.bounce.tools.WorldContactListener;
@@ -39,7 +39,7 @@ public class PlayScreen implements ScreenState {
     TmxMapLoader mapLoader;
     TiledMap map;
     OrthogonalTiledMapRenderer mapRenderer;
-    SmallBall ball;
+    Ball ball;
 
     World world;
     Box2DDebugRenderer box2DDebugRenderer;
@@ -74,7 +74,10 @@ public class PlayScreen implements ScreenState {
         box2DDebugRenderer = new Box2DDebugRenderer();
         new WorldCreator(world, map);
 
-        ball = new SmallBall(world, this);
+        ball = new Ball(world, this);
+
+
+
         world.setContactListener(new WorldContactListener());
     }
 
@@ -88,15 +91,19 @@ public class PlayScreen implements ScreenState {
     }
 
     public void handleInputs(float dt) {
-        //ball.handleInputs(dt);
-        ball.handleButtonInputs(dt);
+        ball.handleInputs(dt);
+        //ball.handleButtonInputs(dt);
     }
 
     @Override
     public void update(float dt) {
         world.step(1/60f, 6, 2);
         handleInputs(dt);
+
+
+
         ball.update(dt);
+        //
         cam.position.x = ball.getBody().getPosition().x;
         cam.update();
         mapRenderer.setView(cam);

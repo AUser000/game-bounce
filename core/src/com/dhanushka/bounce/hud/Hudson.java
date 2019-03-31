@@ -8,14 +8,13 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.dhanushka.bounce.Bounce;
-import com.dhanushka.bounce.sprites.SmallBall;
+import com.dhanushka.bounce.sprites.Ball;
 import com.dhanushka.bounce.tools.Constants;
 import com.dhanushka.bounce.tools.GameScreenManager;
 
@@ -81,11 +80,11 @@ public class Hudson {
         scoreButton.addListener(new InputListener(){
             @Override
             public void touchUp (InputEvent event, float x, float y, int pointer, int button) {
-                SmallBall.right = false;
+                Ball.right = false;
             }
             @Override
             public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
-                SmallBall.right = true;
+                Ball.right = true;
                 return true;
             }
         });

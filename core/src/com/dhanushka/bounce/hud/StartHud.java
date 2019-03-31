@@ -15,7 +15,6 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.dhanushka.bounce.Bounce;
-import com.dhanushka.bounce.sprites.SmallBall;
 import com.dhanushka.bounce.tools.Constants;
 import com.dhanushka.bounce.tools.GameScreenManager;
 
@@ -34,7 +33,6 @@ public class StartHud {
         TextButton.TextButtonStyle style = new TextButton.TextButtonStyle();
         style.font = font;
         playButton = new TextButton("BOUNCE TWO", style);
-
 
 
         Table table = new Table();

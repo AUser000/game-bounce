@@ -1,13 +1,15 @@
 package com.dhanushka.bounce.tools;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.Contact;
 import com.badlogic.gdx.physics.box2d.ContactImpulse;
 import com.badlogic.gdx.physics.box2d.ContactListener;
 import com.badlogic.gdx.physics.box2d.Fixture;
 import com.badlogic.gdx.physics.box2d.Manifold;
-import com.dhanushka.bounce.sprites.SmallBall;
-import com.dhanushka.bounce.sprites.utils.InteractiveTileObject;
+import com.dhanushka.bounce.sprites.Ball;
+import com.dhanushka.bounce.sprites.utils.KeyValue;
+import javafx.util.Pair;
 
 public class WorldContactListener implements ContactListener {
 
@@ -18,16 +20,26 @@ public class WorldContactListener implements ContactListener {
         Fixture fixtureB = contact.getFixtureB();
 
         if(fixtureA.getUserData() == "head" || fixtureB.getUserData() == "head") {
-            SmallBall.headHit = true;
+            Ball.headHit = true;
         } else if (fixtureA.getUserData() == "small" || fixtureB.getUserData() == "small") {
             Gdx.app.log("ok", "small");
-            SmallBall.change = true;
-            SmallBall.isBig = true;
+            Ball.change = true;
+            Ball.isBig = true;
         } else if (fixtureA.getUserData() == "big" || fixtureB.getUserData() == "big") {
             Gdx.app.log("ok", "big");
-            SmallBall.change = true;
-            SmallBall.isBig = false;
+            Ball.change = true;
+            Ball.isBig = false;
         }
+//        else if(fixtureA.getUserData() == "water" || fixtureB.getUserData() == "water"){
+//            Gdx.app.log("hello", "world");
+//            if (fixtureA.getBody().getUserData() == "water") {
+//                Ball.setFixturePair(new KeyValue(fixtureB, fixtureA));
+//                Ball.ballIsInWater = true;
+//            } else {
+//                Ball.setFixturePair(new KeyValue(fixtureA, fixtureB));
+//                Ball.ballIsInWater = true;
+//            }
+//        }
     }
 
     @Override
@@ -36,8 +48,13 @@ public class WorldContactListener implements ContactListener {
         Fixture fixtureB = contact.getFixtureB();
 
         if(fixtureA.getUserData() == "head" || fixtureB.getUserData() == "head") {
-            SmallBall.headHit = false;
+            Gdx.app.log("end contact", " end head");
+            Ball.headHit = false;
         }
+//        else if(fixtureA.getUserData() == "water" || fixtureB.getUserData() == "water"){
+//            Gdx.app.log("end contact", "end head");
+//            Ball.ballIsInWater = false;
+//        }
     }
 
     @Override

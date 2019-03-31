@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="80" height="9" tilewidth="32" tileheight="32" nextobjectid="50">
+ <tileset firstgid="1" name="pack" tilewidth="32" tileheight="32" tilecount="64">
+  <image source="pack.png" width="1024" height="64"/>
+ </tileset>
+ <layer name="Tile Layer 1" width="80" height="9">
+  <data encoding="base64" compression="zlib">
+   eJxjYmBgYBrFFGF2JIxNjN6YFm4gx0xCekbDbzT8Bps7B8LtyhS4gW2Qhx+p4UmojB2oMphe+ZdSe6kRfvRKK/QMP0Uscro41HMSMBNdH7H+0sVjLyF5ZH8Qi2F60MsXGNZgwJ0eRjFxGAA94xFe
+  </data>
+ </layer>
+ <objectgroup name="small">
+  <object id="1" x="322" y="229" width="29.5" height="26"/>
+  <object id="3" x="1922" y="228.5" width="348.5" height="27"/>
+ </objectgroup>
+ <objectgroup name="big">
+  <object id="4" x="1057.5" y="129.5" width="29" height="29.5"/>
+  <object id="5" x="2338" y="226" width="28" height="29.5"/>
+ </objectgroup>
+ <objectgroup name="bombs">
+  <object id="7" x="931" y="226.5" width="26" height="28.5"/>
+  <object id="8" x="483.5" y="228" width="25" height="27"/>
+  <object id="9" x="1379.5" y="228.5" width="25.5" height="26"/>
+  <object id="11" x="1443.5" y="228" width="25" height="27.5"/>
+  <object id="12" x="1634.5" y="228" width="26.5" height="27.5"/>
+  <object id="13" x="1698.5" y="227.5" width="27" height="28.5"/>
+ </objectgroup>
+ <objectgroup name="life">
+  <object id="16" x="678" y="227.667" width="22.3333" height="26"/>
+ </objectgroup>
+ <objectgroup name="boundry">
+  <object id="17" x="31.6667" y="32.3333">
+   <polyline points="0,0 0,224.333 224,224.333 224.333,96 288,96.3333 287.667,223.667 608.667,224 608.667,128 800.333,128.333 800,191.667 640.667,191.667 640,224 1024.33,224 1024.33,192.333 864.667,191 864.667,128 1056,128 1056,223.667 1824.67,224 1824.67,128.333 1888.33,128 1888,224.333 2240,224 2240.67,128 2304,128.333 2304,224 2528.33,224 2528,192.333 2496.33,192.333 2496.33,-0.333333 2304.67,-0.666667 2304.33,63.6667 2240.33,63 2239.67,-0.666667 1888.33,-1 1887.67,63.6667 1824,63.3333 1824.33,-0.666667 1216.67,-0.666667 1216.33,159.333 1152.67,159.333 1152.33,-0.333333 160.333,0 159.667,159.333 96,159 96.3333,0 0.666667,-0.333333"/>
+  </object>
+  <object id="26" x="2.66667" y="4.66667" width="28.3333" height="281.667"/>
+  <object id="29" x="33" y="257" width="2531" height="31"/>
+  <object id="30" x="256.5" y="159.667" width="63" height="96.8333"/>
+  <object id="31" x="127" y="2" width="64" height="191"/>
+  <object id="32" x="192.5" y="1" width="2371.14" height="30.6667"/>
+  <object id="34" x="640.333" y="161" width="191.667" height="63.6667"/>
+  <object id="36" x="640.333" y="226" width="31.3333" height="30.6667"/>
+  <object id="37" x="896.667" y="161" width="191" height="63"/>
+  <object id="38" x="1057.33" y="226" width="30.6667" height="29.6667"/>
+  <object id="40" x="1185" y="33" width="63.6667" height="159"/>
+  <object id="41" x="1856.33" y="34.6667" width="63.3333" height="61.6667"/>
+  <object id="42" x="1857" y="161" width="62.6667" height="94"/>
+  <object id="44" x="2273.33" y="161" width="61.6667" height="94.6667"/>
+  <object id="45" x="2528.33" y="33" width="32.6667" height="191"/>
+  <object id="46" x="2272.67" y="33" width="63.3333" height="63"/>
+ </objectgroup>
+</map>
