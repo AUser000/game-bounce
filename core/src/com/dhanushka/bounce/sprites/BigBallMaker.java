@@ -7,8 +7,8 @@ import com.dhanushka.bounce.sprites.utils.InteractiveTileObject;
 
 public class BigBallMaker extends InteractiveTileObject {
 
-    protected BigBallMaker(World world, TiledMap map, Rectangle bounds) {
-        super(world, map, bounds);
+    public BigBallMaker(World world, TiledMap map, Rectangle bounds) {
+        super(world, map, bounds, "big");
     }
 
     @Override

@@ -15,8 +15,10 @@ import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.Shape;
 import com.badlogic.gdx.physics.box2d.World;
 import com.dhanushka.bounce.Bounce;
+import com.dhanushka.bounce.sprites.BigBallMaker;
 import com.dhanushka.bounce.sprites.Bombs;
 import com.dhanushka.bounce.sprites.Liquid;
+import com.dhanushka.bounce.sprites.SmallBallMaker;
 
 public class WorldCreator {
     public WorldCreator(World world, TiledMap map) {
@@ -42,6 +44,7 @@ public class WorldCreator {
             body.createFixture(shape, 1.0f);
             //shapeforplyline.dispose();
         }
+
         // boundries
         for(MapObject object: map.getLayers().get(5).getObjects().getByType(MapObject.class)) {
             if(object instanceof  PolylineMapObject) {
@@ -64,38 +67,30 @@ public class WorldCreator {
 //            body.createFixture(fixtureDef);
 //        }
 
-        // bombs
-        // lives
-        for(MapObject object: map.getLayers().get(4).getObjects().getByType(RectangleMapObject.class)) {
-            Rectangle rectangle = ((RectangleMapObject)object).getRectangle();
-            System.out.println("+");
-            new Bombs(world, map, rectangle);
-        }
-
         // smalls
         for(MapObject object: map.getLayers().get(1).getObjects().getByType(RectangleMapObject.class)) {
             Rectangle rectangle = ((RectangleMapObject)object).getRectangle();
-            System.out.println("added smaller");
-            bodyDef.type = BodyDef.BodyType.StaticBody;
-            bodyDef.position.set((rectangle.getX() + rectangle.getWidth()/2)/ Bounce.PPM, (rectangle.getY() + rectangle.getHeight()/2)/Bounce.PPM);
-
-            body = world.createBody(bodyDef);
-            shape.setAsBox(rectangle.getWidth()/2/Bounce.PPM, rectangle.getHeight()/2/Bounce.PPM);
-            fixtureDef.shape = shape;
-            body.createFixture(fixtureDef).setUserData("small");
+            new SmallBallMaker(world, map, rectangle);
         }
 
         // big
         for(MapObject object: map.getLayers().get(2).getObjects().getByType(RectangleMapObject.class)) {
             Rectangle rectangle = ((RectangleMapObject)object).getRectangle();
-            System.out.println("added bigger");
-            bodyDef.type = BodyDef.BodyType.StaticBody;
-            bodyDef.position.set((rectangle.getX() + rectangle.getWidth()/2)/ Bounce.PPM, (rectangle.getY() + rectangle.getHeight()/2)/Bounce.PPM);
+            new BigBallMaker(world, map, rectangle);
+        }
 
-            body = world.createBody(bodyDef);
-            shape.setAsBox(rectangle.getWidth()/2/Bounce.PPM, rectangle.getHeight()/2/Bounce.PPM);
-            fixtureDef.shape = shape;
-            body.createFixture(fixtureDef).setUserData("big");
+        // bombs
+        for(MapObject object: map.getLayers().get(3).getObjects().getByType(RectangleMapObject.class)) {
+            Rectangle rectangle = ((RectangleMapObject)object).getRectangle();
+            System.out.println("+");
+            new Bombs(world, map, rectangle);
+        }
+
+        // lives
+        for(MapObject object: map.getLayers().get(4).getObjects().getByType(RectangleMapObject.class)) {
+            Rectangle rectangle = ((RectangleMapObject)object).getRectangle();
+            System.out.println("+");
+            new Bombs(world, map, rectangle);
         }
 
     }

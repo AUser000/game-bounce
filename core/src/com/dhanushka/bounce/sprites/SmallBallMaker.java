@@ -7,9 +7,9 @@ import com.dhanushka.bounce.sprites.utils.InteractiveTileObject;
 
 public class SmallBallMaker extends InteractiveTileObject {
 
-    protected SmallBallMaker(World world, TiledMap map, Rectangle bounds) {
+    public SmallBallMaker(World world, TiledMap map, Rectangle bounds) {
 
-        super(world, map, bounds);
+        super(world, map, bounds, "small");
     }
 
     @Override

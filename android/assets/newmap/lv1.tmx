@@ -5,24 +5,24 @@
  </tileset>
  <layer name="Tile Layer 1" width="80" height="9">
   <data encoding="base64" compression="zlib">
-   eJxjYmBgYBrFFGF2JIxNjN6YFm4gx0xCekbDbzT8Bps7B8LtyhS4gW2Qhx+p4UmojB2oMphe+ZdSe6kRfvRKK/QMP0Uscro41HMSMBNdH7H+0sVjLyF5ZH8Qi2F60MsXGNZgwJ0eRjFxGAA94xFe
+   eJxjYmBgYBrFFGF2JIxNjN6YFm4gx0xCekbDbzT8Bps7B8LtyhS4gW2Qhx+p4UmojB2oMphe+ZdSe6kRfvRKK/QMP0Uscro41HMSMBNdH7H+0sVjLyF5ZH8Qi2F60MsXYtLLKCYOAwAUHxE9
   </data>
  </layer>
  <objectgroup name="small">
-  <object id="1" x="322" y="229" width="29.5" height="26"/>
+  <object id="1" x="320.667" y="227.667" width="30.8333" height="28.333"/>
   <object id="3" x="1922" y="228.5" width="348.5" height="27"/>
  </objectgroup>
  <objectgroup name="big">
   <object id="4" x="1057.5" y="129.5" width="29" height="29.5"/>
-  <object id="5" x="2338" y="226" width="28" height="29.5"/>
+  <object id="5" x="2338.33" y="225" width="28" height="29.5"/>
  </objectgroup>
  <objectgroup name="bombs">
   <object id="7" x="931" y="226.5" width="26" height="28.5"/>
-  <object id="8" x="483.5" y="228" width="25" height="27"/>
-  <object id="9" x="1379.5" y="228.5" width="25.5" height="26"/>
-  <object id="11" x="1443.5" y="228" width="25" height="27.5"/>
-  <object id="12" x="1634.5" y="228" width="26.5" height="27.5"/>
-  <object id="13" x="1698.5" y="227.5" width="27" height="28.5"/>
+  <object id="8" x="482.667" y="227.333" width="26.1667" height="27"/>
+  <object id="9" x="1378.5" y="226.833" width="26.1667" height="26"/>
+  <object id="11" x="1443.5" y="227" width="25" height="27.5"/>
+  <object id="12" x="1634.5" y="227" width="26.5" height="27.5"/>
+  <object id="13" x="1698.5" y="226.833" width="27" height="28.5"/>
  </objectgroup>
  <objectgroup name="life">
   <object id="16" x="678" y="227.667" width="22.3333" height="26"/>
@@ -36,7 +36,7 @@
   <object id="30" x="256.5" y="159.667" width="63" height="96.8333"/>
   <object id="31" x="127" y="2" width="64" height="191"/>
   <object id="32" x="192.5" y="1" width="2371.14" height="30.6667"/>
-  <object id="34" x="640.333" y="161" width="191.667" height="63.6667"/>
+  <object id="34" x="640.333" y="161" width="191.667" height="63"/>
   <object id="36" x="640.333" y="226" width="31.3333" height="30.6667"/>
   <object id="37" x="896.667" y="161" width="191" height="63"/>
   <object id="38" x="1057.33" y="226" width="30.6667" height="29.6667"/>

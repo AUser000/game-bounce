@@ -22,24 +22,16 @@ public class WorldContactListener implements ContactListener {
         if(fixtureA.getUserData() == "head" || fixtureB.getUserData() == "head") {
             Ball.headHit = true;
         } else if (fixtureA.getUserData() == "small" || fixtureB.getUserData() == "small") {
-            Gdx.app.log("ok", "small");
-            Ball.change = true;
-            Ball.isBig = true;
+            if(!Ball.isBig) {
+                Ball.change = true;
+                Ball.isBig = true;
+            }
         } else if (fixtureA.getUserData() == "big" || fixtureB.getUserData() == "big") {
-            Gdx.app.log("ok", "big");
-            Ball.change = true;
-            Ball.isBig = false;
+            if(Ball.isBig) { // this is very flexible line thank you
+                Ball.change = true;
+                Ball.isBig = false;
+            }
         }
-//        else if(fixtureA.getUserData() == "water" || fixtureB.getUserData() == "water"){
-//            Gdx.app.log("hello", "world");
-//            if (fixtureA.getBody().getUserData() == "water") {
-//                Ball.setFixturePair(new KeyValue(fixtureB, fixtureA));
-//                Ball.ballIsInWater = true;
-//            } else {
-//                Ball.setFixturePair(new KeyValue(fixtureA, fixtureB));
-//                Ball.ballIsInWater = true;
-//            }
-//        }
     }
 
     @Override

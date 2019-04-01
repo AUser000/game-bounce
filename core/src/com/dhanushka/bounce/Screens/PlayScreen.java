@@ -91,8 +91,8 @@ public class PlayScreen implements ScreenState {
     }
 
     public void handleInputs(float dt) {
-        ball.handleInputs(dt);
-        //ball.handleButtonInputs(dt);
+        //ball.handleInputs(dt);
+        ball.handleButtonInputs(dt);
     }
 
     @Override
