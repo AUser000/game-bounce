@@ -31,6 +31,10 @@ public class WorldContactListener implements ContactListener {
                 Ball.change = true;
                 Ball.isBig = false;
             }
+        } else if (fixtureA.getUserData() == "bomb" || fixtureB.getUserData() == "bomb") {
+            Ball.isOut = true;
+        } else if (fixtureA.getUserData() == "lvl" || fixtureB.getUserData() == "lvl") {
+            Ball.goNextLvl = true;
         }
     }
 
@@ -43,10 +47,6 @@ public class WorldContactListener implements ContactListener {
             Gdx.app.log("end contact", " end head");
             Ball.headHit = false;
         }
-//        else if(fixtureA.getUserData() == "water" || fixtureB.getUserData() == "water"){
-//            Gdx.app.log("end contact", "end head");
-//            Ball.ballIsInWater = false;
-//        }
     }
 
     @Override

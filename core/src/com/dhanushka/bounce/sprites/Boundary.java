@@ -5,9 +5,9 @@ import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.physics.box2d.World;
 import com.dhanushka.bounce.sprites.utils.InteractiveTileObject;
 
-public class Speeder extends InteractiveTileObject {
+public class Boundary extends InteractiveTileObject {
 
-    public Speeder(World world, TiledMap map, Rectangle bounds) {
+    public Boundary(World world, TiledMap map, Rectangle bounds) {
         super(world, map, bounds);
     }
 

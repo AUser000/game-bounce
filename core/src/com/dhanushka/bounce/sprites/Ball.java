@@ -17,6 +17,7 @@ import com.dhanushka.bounce.Screens.PlayScreen;
 import com.dhanushka.bounce.sprites.utils.KeyValue;
 import com.dhanushka.bounce.sprites.utils.States;
 import com.dhanushka.bounce.tools.Constants;
+import com.dhanushka.bounce.tools.GameScreenManager;
 
 public class Ball extends Sprite {
 
@@ -29,19 +30,33 @@ public class Ball extends Sprite {
     private float density = 1f;
     private static KeyValue fixturePair;
     private TextureRegion ballRegion;
-    public static boolean isBig = false;
-    public static boolean change       = false;
+    int maxTime = 3;
+    int time = 0;
+    public GameScreenManager gsm;
+    private Vector2 savedPosition;
+    public static boolean goNextLvl      = false;
+    public static boolean svdBallIsSmall = true;
+    public static boolean isBig          = false;
+    public static boolean change         = false;
     public static boolean ballIsInWater  = false;
-    public static boolean headHit      = false;
-    public static boolean up           = false;
-    public static boolean left         = false;
-    public static boolean right        = false;
+    public static boolean headHit        = false;
+    public static boolean up             = false;
+    public static boolean left           = false;
+    public static boolean right          = false;
+    public static boolean isOut          = false;
+    private int lvl;
     //Array<Body> bodies = new Array<Body>(world.getBodyCount());
 
-    public Ball(World world, PlayScreen screen) {
+    public Ball(World world, PlayScreen screen, int lvl,GameScreenManager gsm) {
         super(new Texture(Constants.SMALL_BALL)); //android/assets/
+        this.lvl = lvl;
         this.world = world;
+        if(gsm == null) {
+            Gdx.app.log("gsm", "isnt null");
+        }
+        this.gsm = gsm;
         defineBall(); //"android/assets/ball-small.png"
+        savedPosition = new Vector2(64/ Bounce.PPM, 128/ Bounce.PPM);
         fixturePair = new KeyValue(null, null);
         canBounce = true;
     }
@@ -53,7 +68,8 @@ public class Ball extends Sprite {
 
     private void defineBall() {
         BodyDef bodyDef = new BodyDef();
-        bodyDef.position.set(64/ Bounce.PPM, 128/ Bounce.PPM);
+        savedPosition = new Vector2(64/ Bounce.PPM, 128/ Bounce.PPM);
+        bodyDef.position.set(savedPosition);
         bodyDef.type = BodyDef.BodyType.DynamicBody;
 
         smallBallBody = world.createBody(bodyDef);
@@ -108,6 +124,60 @@ public class Ball extends Sprite {
 
     private void defineBigBall() {
         Vector2 position = smallBallBody.getPosition();
+        world.destroyBody(smallBallBody);
+        BodyDef bodyDef = new BodyDef();
+        bodyDef.position.set(position); // position
+        bodyDef.type = BodyDef.BodyType.DynamicBody;
+
+        bigBallBody = world.createBody(bodyDef);
+        FixtureDef fixtureDef = new FixtureDef();
+        CircleShape shape = new CircleShape();
+        shape.setRadius(21/ Bounce.PPM);
+
+        fixtureDef.shape = shape;
+        bigBallBody.createFixture(fixtureDef);
+
+        // now head
+        EdgeShape head = new EdgeShape();
+        head.set(new Vector2(-5/Bounce.PPM, 21/Bounce.PPM), new Vector2(5/Bounce.PPM, 21/Bounce.PPM));
+        fixtureDef.shape = head;
+        fixtureDef.isSensor = true;
+
+        bigBallBody.createFixture(fixtureDef).setUserData("head");
+        //ball.setLinearDamping(3f);
+        ballRegion = new TextureRegion(getTexture(), 0, 0, 31, 31);
+        setBounds(0, 0, 42/Bounce.PPM, 42/Bounce.PPM);
+        setRegion(ballRegion);
+    }
+
+    private void defineSmallBall(Vector2 position) {
+        world.destroyBody(bigBallBody);
+        BodyDef bodyDef = new BodyDef();
+        bodyDef.position.set(position);
+        bodyDef.type = BodyDef.BodyType.DynamicBody;
+
+        smallBallBody = world.createBody(bodyDef);
+        FixtureDef fixtureDef = new FixtureDef();
+        CircleShape shape = new CircleShape();
+        shape.setRadius(15/ Bounce.PPM);
+
+        fixtureDef.shape = shape;
+        smallBallBody.createFixture(fixtureDef);
+
+        // now head
+        EdgeShape head = new EdgeShape();
+        head.set(new Vector2(-5/Bounce.PPM, 15/Bounce.PPM), new Vector2(5/Bounce.PPM, 15/Bounce.PPM));
+        fixtureDef.shape = head;
+        fixtureDef.isSensor = true;
+
+        smallBallBody.createFixture(fixtureDef).setUserData("head");
+        //ball.setLinearDamping(3f);
+        ballRegion = new TextureRegion(getTexture(), 0, 0, 31, 31);
+        setBounds(0, 0, 31/Bounce.PPM, 31/Bounce.PPM);
+        setRegion(ballRegion);
+    }
+
+    private void defineBigBall(Vector2 position) {
         world.destroyBody(smallBallBody);
         BodyDef bodyDef = new BodyDef();
         bodyDef.position.set(position); // position
@@ -227,11 +297,30 @@ public class Ball extends Sprite {
                 bigBallBody.applyLinearImpulse(new Vector2(0, 2f), bigBallBody.getWorldCenter(), true);
             }
         }
+        if(isOut) {
+            isOut = false;
+            if(svdBallIsSmall) {
+                defineSmallBall(savedPosition);
+            } else {
+                defineBigBall(savedPosition);
+            }
+        }
+        if(goNextLvl) {
+            gsm.loadNextPlayScreen(2);
+            goNextLvl = false;
+        }
     }
 
     // below codes should work in second release
-    public static void out() {
-        System.out.print("-out-");
+    public void outItter(float dt) {
+        if(time > maxTime) {
+            time += dt;
+            // set
+        } else {
+            // get saved position and restart
+            // remove a life
+            // if lives is over show game over
+        }
     }
 
     public static KeyValue getFixturePair() {

@@ -22,6 +22,7 @@ import com.dhanushka.bounce.Bounce;
 import com.dhanushka.bounce.hud.Hud;
 import com.dhanushka.bounce.sprites.Ball;
 import com.dhanushka.bounce.tools.Constants;
+import com.dhanushka.bounce.tools.GameScreenManager;
 import com.dhanushka.bounce.tools.ScreenState;
 import com.dhanushka.bounce.tools.WorldContactListener;
 import com.dhanushka.bounce.tools.WorldCreator;
@@ -47,9 +48,10 @@ public class PlayScreen implements ScreenState {
     int level;
 
 
-    public PlayScreen(Bounce game, int level) {
+    public PlayScreen(Bounce game, int level, GameScreenManager gsm) {
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+        this.level = level;
         this.game = game;
         cam = new OrthographicCamera();
         viewport = new FitViewport(Bounce.V_WIDTH/Bounce.PPM, Bounce.V_HEIGHT/Bounce.PPM, cam);
@@ -74,7 +76,7 @@ public class PlayScreen implements ScreenState {
         box2DDebugRenderer = new Box2DDebugRenderer();
         new WorldCreator(world, map);
 
-        ball = new Ball(world, this);
+        ball = new Ball(world, this, level, gsm);
 
 
 
@@ -91,7 +93,7 @@ public class PlayScreen implements ScreenState {
     }
 
     public void handleInputs(float dt) {
-        //ball.handleInputs(dt);
+        ball.handleInputs(dt);
         ball.handleButtonInputs(dt);
     }
 

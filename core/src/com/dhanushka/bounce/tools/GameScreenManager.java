@@ -24,6 +24,7 @@ public class GameScreenManager {
     public enum STATE {
         MAIN_MENU,
         PLAY,
+        PLAY2,
         SETTINGS,
         START
     }
@@ -31,13 +32,13 @@ public class GameScreenManager {
     public GameScreenManager(Bounce game) {
         bounce = game;
         initGameScreen();
-        previous = STATE.PLAY;
+        previous = STATE.START;
     }
 
     private void initGameScreen() {
         gameScreens = new HashMap<STATE, ScreenState>();
 
-        gameScreens.put(STATE.PLAY, new PlayScreen(bounce, getLevel()));
+        gameScreens.put(STATE.PLAY, new PlayScreen(bounce, getLevel(), this));
         gameScreens.put(STATE.START, new StartScreen(this, bounce.batch));
         gameScreens.put(STATE.MAIN_MENU, new MenuScreen(bounce.batch, this));
         gameScreens.put(STATE.SETTINGS, new GameOverScreen());
@@ -60,7 +61,18 @@ public class GameScreenManager {
     public void setScreen(STATE nextScreen) {
         bounce.setScreen(gameScreens.get(nextScreen));
         gameScreens.get(nextScreen).activeInputProcessor();
-//        gameScreens.get(previous).dispose();
-//        previous = nextScreen;
+        Gdx.app.log("set screen", "removed screen");
+        if(previous != STATE.MAIN_MENU) {
+            gameScreens.remove(previous);
+        }
+        previous = nextScreen;
+    }
+
+    public void loadNextPlayScreen(int nextLevel) {
+        setScreen(STATE.MAIN_MENU);
+        PlayScreen playScreen = new PlayScreen(this.bounce, nextLevel, this);
+        gameScreens.put(STATE.PLAY, playScreen);
+        setScreen(STATE.PLAY);
+
     }
 }

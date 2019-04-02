@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="80" height="9" tilewidth="32" tileheight="32" nextobjectid="50">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="80" height="9" tilewidth="32" tileheight="32" nextobjectid="52">
  <tileset firstgid="1" name="pack" tilewidth="32" tileheight="32" tilecount="64">
   <image source="pack.png" width="1024" height="64"/>
  </tileset>
  <layer name="Tile Layer 1" width="80" height="9">
   <data encoding="base64" compression="zlib">
-   eJxjYmBgYBrFFGF2JIxNjN6YFm4gx0xCekbDbzT8Bps7B8LtyhS4gW2Qhx+p4UmojB2oMphe+ZdSe6kRfvRKK/QMP0Uscro41HMSMBNdH7H+0sVjLyF5ZH8Qi2F60MsXYtLLKCYOAwAUHxE9
+   eJxjYmBgYBrFFGF2JIxNjN6YFm4gx0xCekbDbzT8Bps7B8LtyhS4gW2Qhx+p4UmojB2oMphe+ZdSe6kRfvRKK/QMP0Uscro41HMSMBNdH7H+0sVjLyF5ZH8Qi2F60MsXGOZmwJ0eRjFxGAAZLxFB
   </data>
  </layer>
  <objectgroup name="small">
@@ -46,5 +46,8 @@
   <object id="44" x="2273.33" y="161" width="61.6667" height="94.6667"/>
   <object id="45" x="2528.33" y="33" width="32.6667" height="191"/>
   <object id="46" x="2272.67" y="33" width="63.3333" height="63"/>
+ </objectgroup>
+ <objectgroup name="nxtlvl">
+  <object id="51" x="2546" y="228" width="15.5" height="27.5"/>
  </objectgroup>
 </map>

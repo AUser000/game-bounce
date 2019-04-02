@@ -5,10 +5,11 @@ import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.physics.box2d.World;
 import com.dhanushka.bounce.sprites.utils.InteractiveTileObject;
 
-public class Speeder extends InteractiveTileObject {
+public class NxtLvl extends InteractiveTileObject {
 
-    public Speeder(World world, TiledMap map, Rectangle bounds) {
-        super(world, map, bounds);
+    public NxtLvl(World world, TiledMap map, Rectangle bounds) {
+
+        super(world, map, bounds, "lvl");
     }
 
     @Override

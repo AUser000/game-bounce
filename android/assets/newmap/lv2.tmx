@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="80" height="9" tilewidth="32" tileheight="32" nextobjectid="36">
+ <tileset firstgid="1" name="pack" tilewidth="32" tileheight="32" tilecount="64">
+  <image source="pack.png" width="1024" height="64"/>
+ </tileset>
+ <layer name="Tile Layer 1" width="80" height="9">
+  <data encoding="base64" compression="zlib">
+   eJxjYmBgYBrFFGF2JIxNDF2eE488pRib3YTcNFCY3PAjN25Gw48+bhpu4adIZXt1SQw/YjEblcSJxdxEhB++MCYVsxGpbqDTFbFxSox7qeEnSs0Y6HAdyPBTpmH46aLR1BZHth+b3EC3m4YDBgCV3RCX
+  </data>
+ </layer>
+ <objectgroup name="small">
+  <object id="2" x="289.333" y="132.333" width="29.3333" height="26.6667"/>
+ </objectgroup>
+ <objectgroup name="big">
+  <object id="3" x="769.667" y="225.333" width="29" height="30.6667"/>
+ </objectgroup>
+ <objectgroup name="bombs">
+  <object id="4" x="930.667" y="132" width="27" height="27.3333"/>
+  <object id="5" x="1506.33" y="227.333" width="27" height="28.3333"/>
+  <object id="6" x="1571" y="227.667" width="26.3333" height="28"/>
+  <object id="7" x="1698.33" y="227.333" width="27" height="28"/>
+  <object id="8" x="1762.67" y="227.667" width="27" height="27.6667"/>
+  <object id="9" x="1890.67" y="227" width="26.3333" height="28.3333"/>
+  <object id="10" x="1954.67" y="227" width="26.3333" height="28"/>
+  <object id="11" x="2082.33" y="227.333" width="27" height="27.6667"/>
+  <object id="12" x="2147" y="228.333" width="26.3333" height="27.3333"/>
+  <object id="13" x="2370.33" y="228" width="27.6667" height="27.6667"/>
+ </objectgroup>
+ <objectgroup name="life">
+  <object id="14" x="417" y="33.6667" width="27.3333" height="29.3333"/>
+ </objectgroup>
+ <objectgroup name="boundary">
+  <object id="16" x="2.33333" y="11.3333" width="28.6667" height="253.333"/>
+  <object id="17" x="32.6667" y="257" width="2512.67" height="19.6667"/>
+  <object id="18" x="33.6667" y="6.66667" width="2498.33" height="25.3333"/>
+  <object id="19" x="384" y="34" width="31" height="60.5"/>
+  <object id="20" x="419.5" y="64.5" width="348" height="31"/>
+  <object id="21" x="416.5" y="160.5" width="447" height="31"/>
+  <object id="22" x="800.5" y="193.5" width="62.5" height="62.5"/>
+  <object id="23" x="897" y="160.5" width="287" height="30.5"/>
+  <object id="24" x="1152.5" y="36" width="31.5" height="121.5"/>
+  <object id="25" x="1313" y="36.5" width="62" height="92"/>
+  <object id="26" x="1312" y="192" width="63.5" height="63"/>
+  <object id="28" x="2336" y="160.5" width="30.5" height="93"/>
+  <object id="30" x="2528.5" y="36.5" width="32" height="91.5"/>
+  <object id="31" x="2528.5" y="161" width="29" height="93.5"/>
+  <object id="34" x="129" y="37" width="63" height="154.5"/>
+  <object id="35" x="257" y="161" width="62" height="92.5"/>
+ </objectgroup>
+ <objectgroup name="nxtlvl">
+  <object id="33" x="2539.5" y="131.5" width="17" height="28.5"/>
+ </objectgroup>
+</map>

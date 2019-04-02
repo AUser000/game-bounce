@@ -17,7 +17,8 @@ import com.badlogic.gdx.physics.box2d.World;
 import com.dhanushka.bounce.Bounce;
 import com.dhanushka.bounce.sprites.BigBallMaker;
 import com.dhanushka.bounce.sprites.Bombs;
-import com.dhanushka.bounce.sprites.Liquid;
+import com.dhanushka.bounce.sprites.Boundary;
+import com.dhanushka.bounce.sprites.NxtLvl;
 import com.dhanushka.bounce.sprites.SmallBallMaker;
 
 public class WorldCreator {
@@ -45,16 +46,15 @@ public class WorldCreator {
             //shapeforplyline.dispose();
         }
 
-        // boundries
+        // boundaries
         for(MapObject object: map.getLayers().get(5).getObjects().getByType(MapObject.class)) {
             if(object instanceof  PolylineMapObject) {
                 continue;
             }
             Rectangle rectangle = ((RectangleMapObject)object).getRectangle();
             System.out.println("+");
-            new Bombs(world, map, rectangle);
+            new Boundary(world, map, rectangle);
         }
-
 //        for(MapObject object: map.getLayers().get(3).getObjects().getByType(RectangleMapObject.class)) {
 //            Rectangle rectangle = ((RectangleMapObject)object).getRectangle();
 //            System.out.println("+");
@@ -68,6 +68,7 @@ public class WorldCreator {
 //        }
 
         // smalls
+        // small
         for(MapObject object: map.getLayers().get(1).getObjects().getByType(RectangleMapObject.class)) {
             Rectangle rectangle = ((RectangleMapObject)object).getRectangle();
             new SmallBallMaker(world, map, rectangle);
@@ -91,6 +92,13 @@ public class WorldCreator {
             Rectangle rectangle = ((RectangleMapObject)object).getRectangle();
             System.out.println("+");
             new Bombs(world, map, rectangle);
+        }
+
+        // boundaries
+        for(MapObject object: map.getLayers().get(6).getObjects().getByType(RectangleMapObject.class)) {
+            Rectangle rectangle = ((RectangleMapObject)object).getRectangle();
+            System.out.println("+");
+            new NxtLvl(world, map, rectangle);
         }
 
     }
